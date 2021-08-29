@@ -1,0 +1,16 @@
+<li class="product-wrapper">
+    <div class="product" id={{ d.id }}>
+        <div class="product-photo">
+            <img class="img" src="{{ d.picture.url }}" alt=""/>
+        </div>
+        <div class="product-title">
+            {{ d.name }}
+        </div>
+        <div class="product-price">
+            {{ d.price }} &#8381
+        </div>
+        <input type="text" class="product-count" value="1" maxlength="3" id={{ d.id }}>
+        <button type="button" class="product-buy" id={{ d.id }}>В КОРЗИНУ
+        </button>
+    </div>
+</li>

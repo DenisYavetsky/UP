@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400&family=Gabriela&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+{% include 'up_app/top.html' %}
+<div class="wrapper">
+    <div class="content">
+        {% block content %}
+            <div class="cart-items">
+                <div class="cart-items-text">Ваша корзина</div>
+                {% for d in data %}
+                    <div class="cart-item">
+                        <div class="cart-item-picture">
+                            <img src={{ d.product.picture.url }}>
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">
+                                {{ d.product }}
+                            </div>
+                            <div class="cart-item-price">
+                                {{ d.cost }} &#8381
+                            </div>
+                            <div>
+                                <input type="text" class="cart-item-count" maxlength="3" value={{ d.count }} id={{ d.id }}>
+                            </div>
+                            <div class="cart-item-total">
+                                {% widthratio d.cost 1 d.count %} &#8381
+                            </div>
+                            <div class="cart-item-delete">
+                                <a href="{% url 'cart_delete' d.id %}"><img src="/media/media/del4.jpg"></a>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="cart-order">
+                <div class="cart-items-text">Оформление заказа</div>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="cart-order-item">
+                            {{ field.label_tag }} <br>
+
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="cart-order-item-button">Оформить</button>
+                </form>
+            </div>
+
+            <div class="cart-order-total">
+                <div class="cart-items-text">Итоговая стоимость</div>
+                <div class="cart-order-total-row">
+                    <div class="cart-order-total-text">Сумма заказа</div>
+                    <div class="cart-order-total-value" id="price">{{ total }} &#8381</div>
+                </div>
+
+                <div class="cart-order-total-row">
+                    <div class="cart-order-total-text">Количество</div>
+                    <div class="cart-order-total-value">{{ count }} шт.</div>
+                </div>
+
+                <div class="cart-order-total-row">
+                    <div class="cart-order-total-text">Доставка</div>
+                    <div class="cart-order-total-value" id="delivery">0 &#8381</div>
+                </div>
+
+                <div class="cart-order-total-row">
+                    <br>
+                </div>
+                <div class="cart-order-total-row">
+                    <div class="cart-order-total-text">Итоговая стоимость</div>
+                    <div class="cart-order-total-value" id="total-price">{{ total }} &#8381</div>
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+    {% include 'up_app/footer.html' %}
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/media/js/script.js"></script>
+
+</body>
+
+</html>

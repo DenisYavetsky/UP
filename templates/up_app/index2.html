@@ -1,0 +1,39 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <title>2</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400&family=Gabriela&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+{% block content %}
+
+    <div class="top">
+        <div class="cart_icon">
+            <a href="{% url 'cart' %}"><img src="/media/media/cart2.jpg"></a>
+        </div>
+        <div class="cart-count">
+            {% if count > 0 %}
+                {{ count }}
+            {% endif %}
+        </div>
+    </div>
+
+<div class="sidebar">
+Коллекции
+{% for coll in collection %}
+
+    <div class="filter-item">
+        <input type="checkbox" class="filter-item" id={{ coll.id }} > {{ coll.name }}
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/media/js/script.js"></script>
+</body>
+</html>

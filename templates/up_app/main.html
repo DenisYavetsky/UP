@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400&family=Gabriela&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+{% include 'up_app/top.html' %}
+<!--подключаем скрытую карточку товара. jq будет ее искать и копировать при работа с фильтрами-->
+{% include 'up_app/product-hide.html' %}
+<div class="content">
+    <ul class="products clearfix">
+        {% block content %}
+            {% csrf_token %}
+            {% for d in data %}
+
+                {% include 'up_app/product.html' %}
+
+            {% endfor %}
+        {% endblock %}
+    </ul>
+</div>
+
+<div class="sidebar">
+    <div class="header-bg">
+        <p><img src="/media/media/collection.png" alt=""></p>
+    </div>
+
+    {% for coll in collection %}
+
+        <div class="filter-item">
+            <input type="checkbox" class="filter-item" id={{ coll.id }}> {{ coll.name }}
+        </div>
+    {% endfor %}
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/media/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+body {
+	font-family: 'Fira Sans Condensed', sans-serif;
+	font-size: 16px;
+}
+
+.product-wrapper {
+	display: block;
+	width: 100%;
+	float: left;
+	transition: width .2s;
+}
+
+.product {
+	display: block;
+	border: 1px solid #b5e9a7;
+	border-radius: 3px;
+	position: relative;
+	background: #fff;
+	margin: 0 20px 20px 0;
+	text-decoration: none;
+	color: #474747;
+	z-index: 0;
+	height: 330px;
+}
+
+.product-photo {
+	position: relative;
+}
+
+.product-photo img {
+	max-width: 100%;
+	max-height: 100%;
+
+}
+
+.product-title {
+	position: relative;
+	margin: 10px;
+}
+
+.product-price {
+	position: absolute;
+	bottom: 45px;
+	right: 10px;
+	font-size: 26px;
+	color: #11ae0f;
+
+}
+
+.product-count{
+	position: absolute;
+	bottom: 48px;
+	left: 10px;
+	width: 50px;
+	height: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    line-height: 17px;
+    font-size: 15px;
+    box-shadow: 0 0 0 0 #fff;
+	text-align: center;
+	font-family: 'Fira Sans Condensed';
+}
+
+.product-buy{
+	position: absolute;
+	bottom: 8px;
+	left: 10px;
+	width: 158px;
+	height: 30px;
+	background-color: #4CAF50;
+	border-radius: 4px;
+    color: white;
+	font-family: 'Fira Sans Condensed';
+    border: 2px solid #4CAF50; /* Green */
+	font-size: 14px;
+	padding: 5px 10px;
+	text-decoration: none;
+	outline: none;
+}
+
+@media only screen and (min-width: 450px) {
+	.product-wrapper {
+		width: 200px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.product-wrapper {
+		width: 200px;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.product-wrapper {
+		width: 200px;
+	}
+}

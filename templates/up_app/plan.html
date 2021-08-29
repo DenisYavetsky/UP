@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Производственный план</title>
+    <link rel="stylesheet" href="/media/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;400&family=Gabriela&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+{% include 'up_app/top.html' %}
+<div class="wrapper">
+    <div class="content">
+        {% block content %}
+            <div class="back">
+
+            </div>
+            <div class="days">
+
+            </div>
+
+            <div class="days-area">
+                {% for d in days %}
+                    <div class="dayofweek">
+                        <div class="month">
+                            {{ d.month }}
+                        </div>
+                        <div class="day">
+                            {{ d.day }}
+                        </div>
+                        <div class="weekday">
+                            {{ d.weekday }}
+                        </div>
+                    </div>
+
+                    <div class="extra">
+                        {% for e in d.extraditions %}
+                            {% for j in e.products %}
+                                {{ j.name }} {{ j.count }}
+                                <br>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                {% endfor %}
+
+            </div>
+            <div class="forward">
+
+            </div>
+            <div class="weeks">
+
+            </div>
+
+        {% endblock %}
+    </div>
+    {% include 'up_app/footer.html' %}
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/media/js/script.js"></script>
+</body>
+</html>

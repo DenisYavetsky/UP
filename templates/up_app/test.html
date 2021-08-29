@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $('#q').keyup(function () {
+
+            q = $('#q').val();
+            if (q != '') {
+
+                var s = 'search/?q=' + q;
+
+                $.get(q).done(function (data) {
+                    console.log(32);
+                    $('#results').html(data);
+                    alert("data loaded: " + data);
+
+                });
+            }
+        });
+    });
+
+</script>
+
+
+
+{% block con_center %}
+    <input type="search" id="q" class="form-control" placeholder="Поиск...">
+    <div id="results"></div>
+{% endblock %}
+
+</body>
+</html>
